@@ -1,0 +1,21 @@
+# Cache static media aggressively. Files are content-addressed by slug
+# in tracks.json, so URL changes when content changes — safe to set
+# long max-age. Long-lived caching enables Cloudflare's edge to honor
+# Range requests (audio scrubbing) properly.
+
+/audio/*
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: bytes
+
+/art/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/styles.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/banner.jpg
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# HTML can be revalidated on every visit
+/*
+  Cache-Control: public, max-age=0, must-revalidate

@@ -150,6 +150,12 @@ if (fs.existsSync(bannerOptimized)) {
 // CSS
 copyFile(path.join(SRC, 'styles.css'), path.join(DIST, 'styles.css'));
 
+// Cloudflare Pages _headers (cache directives — enable edge range support for /audio/*)
+const headersSrc = path.join(SRC, '_headers');
+if (fs.existsSync(headersSrc)) {
+  copyFile(headersSrc, path.join(DIST, '_headers'));
+}
+
 // robots / sitemap (basic)
 fs.writeFileSync(
   path.join(DIST, 'robots.txt'),
