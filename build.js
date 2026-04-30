@@ -277,26 +277,21 @@ function indexHtml() {
 <body>
 ${siteHeader()}
 
-<section class="banner" aria-label="Album banner">
-  <img src="/banner.jpg" alt="" width="2400" height="1200">
-  <div class="banner__overlay"></div>
-  <div class="banner__title">
-    <span class="placard">// CAUTION // EP 01 //</span>
-    <h1 class="banner__album">Sins Against<br>Throughput</h1>
-    <p class="banner__credit"><span class="bullet" aria-hidden="true"></span>By Normalization of Deviance</p>
-    <div class="sub">Hardcore nerdcore for tired operators</div>
-  </div>
+<section class="banner" aria-label="Normalization of Deviance">
+  <img src="/banner.jpg" alt="Normalization of Deviance" width="2400" height="1200">
 </section>
 
-<section class="intro" aria-label="About this record">
-  <div>
-    <p>${escapeHtml(album.tagline)}</p>
-    <p style="color: var(--ink-dim); font-size: 16px;">Seven tracks. Seven failure modes that quietly murder flow inside otherwise functional organizations. Hit play. Pull the cord.</p>
-  </div>
-  <div class="legend">
+<div class="hazard-stripe" aria-hidden="true"></div>
+
+<section class="hero" aria-label="Album">
+  <span class="placard">// CAUTION // EP 01 //</span>
+  <h1 class="hero__album">Sins Against<br>Throughput</h1>
+  <p class="hero__tagline">${escapeHtml(album.tagline)}</p>
+  <p class="hero__sub">Seven tracks. Seven failure modes that quietly murder flow inside otherwise functional organizations. Hit play. Pull the cord.</p>
+  <aside class="hero__legend">
     <span class="label">Operating Manual</span>
     Each track is one sin. Click a cover or title for the full incident report — lyrics, art, and the operational pattern in plain English. MP3 downloads on every track.
-  </div>
+  </aside>
 </section>
 
 <section class="sins" id="sins" aria-label="The Seven Sins Against Throughput">
