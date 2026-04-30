@@ -182,7 +182,7 @@ fs.writeFileSync(
 // templates
 // ---------------------------------------------------------------------------
 
-function head({ title, description, ogImage, canonical }) {
+function head({ title, description, ogImage, ogImageW, ogImageH, ogImageAlt, canonical }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -193,14 +193,21 @@ function head({ title, description, ogImage, canonical }) {
 <link rel="canonical" href="${escapeHtml(canonical)}">
 
 <meta property="og:type" content="music.album">
+<meta property="og:site_name" content="Normalization of Deviance">
 <meta property="og:title" content="${escapeHtml(title)}">
 <meta property="og:description" content="${escapeHtml(description)}">
-<meta property="og:image" content="${escapeHtml(ogImage)}">
 <meta property="og:url" content="${escapeHtml(canonical)}">
+<meta property="og:image" content="${escapeHtml(ogImage)}">
+<meta property="og:image:secure_url" content="${escapeHtml(ogImage)}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="${ogImageW}">
+<meta property="og:image:height" content="${ogImageH}">
+<meta property="og:image:alt" content="${escapeHtml(ogImageAlt || title)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escapeHtml(title)}">
 <meta name="twitter:description" content="${escapeHtml(description)}">
 <meta name="twitter:image" content="${escapeHtml(ogImage)}">
+<meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt || title)}">
 
 <meta name="theme-color" content="#0a0a0a">
 <link rel="stylesheet" href="/styles.css">
@@ -279,14 +286,18 @@ function trackCard(t) {
 
 function indexHtml() {
   // Use the dedicated 1200x630 OG card (banner is 4.88:1 — too wide for social previews)
-  const ogImage = fs.existsSync(path.join(CONTENT, 'optimized', 'og.jpg'))
-    ? `${album.siteUrl}/og.jpg`
-    : `${album.siteUrl}/banner.jpg`;
+  const hasOgCard = fs.existsSync(path.join(CONTENT, 'optimized', 'og.jpg'));
+  const ogImage = hasOgCard ? `${album.siteUrl}/og.jpg` : `${album.siteUrl}/banner.jpg`;
+  const ogImageW = hasOgCard ? 1200 : 2000;
+  const ogImageH = hasOgCard ? 630 : 410;
   const description = `${album.title} — a seven-track concept EP about the operational sins that kill throughput. ${album.tagline}`;
   return `${head({
     title: `${album.band} — ${album.title}`,
     description,
     ogImage,
+    ogImageW,
+    ogImageH,
+    ogImageAlt: `${album.band} — ${album.title}`,
     canonical: album.siteUrl + '/',
   })}
 <body>
@@ -357,6 +368,9 @@ function trackPageHtml(t, idx) {
   const next = tracks[(idx + 1) % tracks.length];
   const ogImage = `${album.siteUrl}/art/${t.slug}.${t._artExt}`;
   const canonical = `${album.siteUrl}/tracks/${t.slug}/`;
+  // Track art is square 1000x1000 after sips compression
+  const ogImageW = 1000;
+  const ogImageH = 1000;
   const lyrics = renderLyrics(readLyrics(t.slug));
   const artSrc = `/art/${t.slug}.${t._artExt}`;
   const audioSrc = `/audio/${t.slug}.mp3`;
@@ -375,6 +389,9 @@ function trackPageHtml(t, idx) {
     title: `${t.title} — ${album.band}`,
     description: t.oneliner,
     ogImage,
+    ogImageW,
+    ogImageH,
+    ogImageAlt: `${t.title} cover art`,
     canonical,
   })}
 <body>
