@@ -205,6 +205,7 @@ function siteHeader() {
     </a>
     <nav class="site-header__nav" aria-label="Primary">
       <a href="/#tracks">Tracks</a>
+      <a href="/#sins">Sins</a>
       <a href="${escapeHtml(album.blogUrl)}" rel="noopener">Essay</a>
       <a href="mailto:${escapeHtml(album.contactEmail)}">Contact</a>
     </nav>
@@ -294,6 +295,26 @@ ${siteHeader()}
   <div class="legend">
     <span class="label">Operating Manual</span>
     Each track is one sin. Click a cover or title for the full incident report — lyrics, art, and the operational pattern in plain English. MP3 downloads on every track.
+  </div>
+</section>
+
+<section class="sins" id="sins" aria-label="The Seven Sins of Flow">
+  <h2 class="sins__title">Field Manual: The Seven Sins of Flow</h2>
+  <div class="sins__grid">
+${tracks
+  .slice()
+  .sort((a, b) => a.sinNumber - b.sinNumber)
+  .map(
+    (t) => `    <div class="sin-entry">
+      <div class="sin-entry__num">${t.sinNumber}</div>
+      <div class="sin-entry__body">
+        <h3>${escapeHtml(t.sin)}</h3>
+        <p>${escapeHtml(t.description)}</p>
+        <a class="sin-entry__link" href="/tracks/${escapeHtml(t.slug)}/">${escapeHtml(t.title)}</a>
+      </div>
+    </div>`
+  )
+  .join('\n')}
   </div>
 </section>
 
