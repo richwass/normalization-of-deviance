@@ -281,8 +281,9 @@ ${siteHeader()}
   <img src="/banner.jpg" alt="" width="2400" height="1200">
   <div class="banner__overlay"></div>
   <div class="banner__title">
-    <span class="eyebrow">Concept EP — Sins Against Throughput</span>
-    <h1>Normalization<br>of <span class="ampersand">Deviance</span></h1>
+    <span class="placard">// CAUTION // EP 01 //</span>
+    <h1 class="banner__album">Sins Against<br>Throughput</h1>
+    <p class="banner__credit"><span class="bullet" aria-hidden="true"></span>By Normalization of Deviance</p>
     <div class="sub">Hardcore nerdcore for tired operators</div>
   </div>
 </section>

@@ -146,36 +146,60 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
 .banner__title {
   position: absolute;
   left: max(24px, 5vw);
-  bottom: 6vw;
-  max-width: 900px;
+  right: max(24px, 5vw);
+  bottom: 4vw;
+  max-width: 1100px;
   font-family: var(--mono);
 }
-.banner__title .eyebrow {
+.banner__title .placard {
   display: inline-block;
-  background: var(--hazard);
-  color: #000;
+  color: var(--hazard);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  padding: 3px 8px;
+  letter-spacing: 0.22em;
+  padding: 4px 10px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  border: 1px solid var(--hazard);
+  margin-bottom: 16px;
 }
-.banner__title h1 {
-  font-size: clamp(34px, 6vw, 84px);
-  line-height: 0.95;
-  margin: 0 0 8px;
+.banner__album {
+  font-size: clamp(44px, 9vw, 132px);
+  line-height: 0.9;
+  margin: 0 0 18px;
   text-transform: uppercase;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  color: var(--hazard);
 }
-.banner__title h1 .ampersand { color: var(--hazard); }
+.banner__credit {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: clamp(13px, 1.3vw, 16px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.banner__credit .bullet {
+  width: 8px;
+  height: 8px;
+  background: var(--hazard);
+  display: inline-block;
+  flex: none;
+}
 .banner__title .sub {
   font-family: var(--mono);
   color: var(--ink-dim);
   font-size: clamp(13px, 1.2vw, 16px);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .banner__title { bottom: 18px; }
+  .banner__album { line-height: 0.92; }
 }
 
 /* ========== INTRO BLOCK ========== */
