@@ -2,7 +2,7 @@
   "name": "normalization-of-deviance",
   "version": "0.1.0",
   "private": true,
-  "description": "Static site for Normalization of Deviance — Seven Sins of Flow",
+  "description": "Static site for Normalization of Deviance — Sins Against Throughput",
   "scripts": {
     "build": "node build.js",
     "serve": "cd dist && python3 -m http.server 8080",

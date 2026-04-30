@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* eslint-disable */
-// Static site builder for Normalization of Deviance — Seven Sins of Flow.
+// Static site builder for Normalization of Deviance — Sins Against Throughput.
 // Reads src/tracks.json + src/lyrics/*.txt + content/* and emits dist/.
 // No dependencies. Run: node build.js
 
@@ -267,7 +267,7 @@ function trackCard(t) {
 
 function indexHtml() {
   const ogImage = `${album.siteUrl}/banner.jpg`;
-  const description = `${album.title} — a seven-track concept EP about the operational sins that kill flow. ${album.tagline}`;
+  const description = `${album.title} — a seven-track concept EP about the operational sins that kill throughput. ${album.tagline}`;
   return `${head({
     title: `${album.band} — ${album.title}`,
     description,
@@ -281,7 +281,7 @@ ${siteHeader()}
   <img src="/banner.jpg" alt="" width="2400" height="1200">
   <div class="banner__overlay"></div>
   <div class="banner__title">
-    <span class="eyebrow">Concept EP — Seven Sins of Flow</span>
+    <span class="eyebrow">Concept EP — Sins Against Throughput</span>
     <h1>Normalization<br>of <span class="ampersand">Deviance</span></h1>
     <div class="sub">Hardcore nerdcore for tired operators</div>
   </div>
@@ -298,8 +298,8 @@ ${siteHeader()}
   </div>
 </section>
 
-<section class="sins" id="sins" aria-label="The Seven Sins of Flow">
-  <h2 class="sins__title">Field Manual: The Seven Sins of Flow</h2>
+<section class="sins" id="sins" aria-label="The Seven Sins Against Throughput">
+  <h2 class="sins__title">Field Manual: The Seven Sins Against Throughput</h2>
   <div class="sins__grid">
 ${tracks
   .slice()
