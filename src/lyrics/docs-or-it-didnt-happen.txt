@@ -1,0 +1,1 @@
+[ Lyrics pending — drop them into src/lyrics/docs-or-it-didnt-happen.txt and rerun build. ]

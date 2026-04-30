@@ -1,0 +1,13 @@
+.DS_Store
+node_modules/
+dist/
+*.log
+.env
+.env.local
+.vscode/
+.idea/
+.claude/
+
+# WAV masters live locally only — site ships MP3
+content/*.wav
+

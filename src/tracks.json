@@ -1,0 +1,98 @@
+{
+  "album": {
+    "title": "Seven Sins of Flow",
+    "band": "Normalization of Deviance",
+    "tagline": "Hardcore nerdcore for tired operators. Seven failure modes, seven songs, one cord to pull.",
+    "siteUrl": "https://normalizationofdeviance.band",
+    "contactEmail": "hello@normalizationofdeviance.band",
+    "blogUrl": "https://www.randomwalkthroughtech.com/p/learning-from-the-failures-of-others",
+    "blogLabel": "Liner notes & full essay: Learning from the Failures of Others",
+    "disclosure": "Human: concept, themes, art direction, curation. AI: lyric drafting, vocals, instrumentation — all prompted and shaped by the human. We disclose this because oral tradition is sin #6."
+  },
+  "tracks": [
+    {
+      "n": 1,
+      "slug": "stop-the-line",
+      "title": "Stop the Line",
+      "sin": "Normalization of Deviance",
+      "sinNumber": 4,
+      "oneliner": "Serious defects deserve an andon-cord response. Focus stays until truly resolved.",
+      "description": "Serious defects should trigger an andon-cord full response. Focus should remain until truly resolved.",
+      "audio": "audio/stop-the-line.mp3",
+      "art": "art/stop-the-line.png",
+      "lyricsFile": "stop-the-line.txt"
+    },
+    {
+      "n": 2,
+      "slug": "no-north-star",
+      "title": "No North Star",
+      "sin": "Vacuum of Intent",
+      "sinNumber": 2,
+      "oneliner": "Without top-down alignment, local and short-term decisions fill the gap.",
+      "description": "Lacking top-down alignment on the few things that need to be true in the future. Local and short-term decisions will fill the gap.",
+      "audio": "audio/no-north-star.mp3",
+      "art": "art/no-north-star.png",
+      "lyricsFile": "no-north-star.txt"
+    },
+    {
+      "n": 3,
+      "slug": "coordination-spaghetti",
+      "title": "Coordination Spaghetti",
+      "sin": "Communication Complexity",
+      "sinNumber": 5,
+      "oneliner": "When too many people must talk to too many others for too many decisions.",
+      "description": "A risk when many people need to talk to too many other people for many decisions.",
+      "audio": "audio/coordination-spaghetti.mp3",
+      "art": "art/coordination-spaghetti.png",
+      "lyricsFile": "coordination-spaghetti.txt"
+    },
+    {
+      "n": 4,
+      "slug": "patched-not-fixed",
+      "title": "Patched Not Fixed",
+      "sin": "Perpetual Triage",
+      "sinNumber": 7,
+      "oneliner": "Managing via expediting instead of fixing the underlying constraint.",
+      "description": "Managing via expediting instead of fixing underlying constraints.",
+      "audio": "audio/patched-not-fixed.mp3",
+      "art": "art/patched-not-fixed.png",
+      "lyricsFile": "patched-not-fixed.txt"
+    },
+    {
+      "n": 5,
+      "slug": "few-nodes-many-consequences",
+      "title": "Few Nodes, Many Consequences",
+      "sin": "Fragility of the Few",
+      "sinNumber": 3,
+      "oneliner": "A small number of subject-matter experts limit progress. Have a plan for the bottleneck.",
+      "description": "A small number of subject matter experts limit progress. If work piles up in front of these bottlenecks it's key to have a plan. This is true about all bottlenecks — but often especially ignored with people.",
+      "audio": "audio/few-nodes-many-consequences.mp3",
+      "art": "art/few-nodes-many-consequences.png",
+      "lyricsFile": "few-nodes-many-consequences.txt"
+    },
+    {
+      "n": 6,
+      "slug": "now-now-now",
+      "title": "Now Now Now",
+      "sin": "Tyranny of the Urgent",
+      "sinNumber": 1,
+      "oneliner": "Picking the short-term better over the long-term valuable. Again. And again.",
+      "description": "Consistently choosing the short-term better over the long-term. Long term is harder, but more valuable.",
+      "audio": "audio/now-now-now.mp3",
+      "art": "art/now-now-now.png",
+      "lyricsFile": "now-now-now.txt"
+    },
+    {
+      "n": 7,
+      "slug": "docs-or-it-didnt-happen",
+      "title": "Docs or It Didn't Happen",
+      "sin": "Oral Tradition",
+      "sinNumber": 6,
+      "oneliner": "If knowledge stays in people instead of shared systems, the org has memory loss.",
+      "description": "A risk if people talk when they should write. Knowledge stays in people instead of in shared systems.",
+      "audio": "audio/docs-or-it-didnt-happen.mp3",
+      "art": "art/docs-or-it-didnt-happen.png",
+      "lyricsFile": "docs-or-it-didnt-happen.txt"
+    }
+  ]
+}

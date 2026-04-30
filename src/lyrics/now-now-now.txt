@@ -1,0 +1,1 @@
+[ Lyrics pending — drop them into src/lyrics/now-now-now.txt and rerun build. ]
