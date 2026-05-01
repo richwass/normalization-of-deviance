@@ -99,6 +99,44 @@ rmDist();
 ensureDir(path.join(DIST, 'audio'));
 ensureDir(path.join(DIST, 'art'));
 
+// ---------------------------------------------------------------------------
+// alternate versions: process each track's alternateVersions array
+// ---------------------------------------------------------------------------
+
+const allAlternates = [];
+for (const t of tracks) {
+  if (!Array.isArray(t.alternateVersions)) continue;
+  for (const alt of t.alternateVersions) {
+    const altSlug = `${t.slug}-${alt.slug}`;
+    const audioSrc = path.join(CONTENT, alt.audioSource);
+    const artSrc = path.join(CONTENT, alt.artSource);
+    const optimizedJpg = path.join(CONTENT, 'optimized', `${altSlug}.jpg`);
+
+    if (fs.existsSync(audioSrc)) {
+      copyFile(audioSrc, path.join(DIST, 'audio', `${altSlug}.mp3`));
+      alt._hasAudio = true;
+    } else {
+      console.warn(`[warn] no audio for alt ${altSlug} (looked for ${alt.audioSource})`);
+      alt._hasAudio = false;
+    }
+
+    if (fs.existsSync(optimizedJpg)) {
+      copyFile(optimizedJpg, path.join(DIST, 'art', `${altSlug}.jpg`));
+      alt._artExt = 'jpg';
+    } else if (fs.existsSync(artSrc)) {
+      copyFile(artSrc, path.join(DIST, 'art', `${altSlug}.png`));
+      alt._artExt = 'png';
+    } else {
+      console.warn(`[warn] no art for alt ${altSlug}`);
+      alt._artExt = 'jpg';
+    }
+
+    alt._fullSlug = altSlug;
+    alt._parent = t;
+    allAlternates.push(alt);
+  }
+}
+
 for (const t of tracks) {
   const audioSrcName = AUDIO_MAP[t.slug];
   const artSrcName = ART_MAP[t.slug];
@@ -225,6 +263,7 @@ function siteHeader() {
     <nav class="site-header__nav" aria-label="Primary">
       <a href="/#tracks">Tracks</a>
       <a href="/#sins">Sins</a>
+      <a href="/#bsides">B-Sides</a>
       <a href="${escapeHtml(album.blogUrl)}" rel="noopener">Essay</a>
       <a href="mailto:${escapeHtml(album.contactEmail)}">Contact</a>
     </nav>
@@ -249,6 +288,48 @@ function siteFooter() {
 </footer>`;
 }
 
+function bsidesSection() {
+  const cards = allAlternates
+    .map((alt) => {
+      const t = alt._parent;
+      const altSlug = alt._fullSlug;
+      const trackUrl = `/tracks/${t.slug}/${alt.slug}/`;
+      const artSrc = `/art/${altSlug}.${alt._artExt}`;
+      const audioSrc = `/audio/${altSlug}.mp3`;
+      const audioBlock = alt._hasAudio
+        ? `<audio controls preload="none" src="${audioSrc}"></audio>`
+        : `<p style="color: var(--ink-dim); font-family: var(--mono); font-size: 13px;">[ Audio pending ]</p>`;
+      return `<article class="bside-card">
+  <a class="bside-card__art" href="${trackUrl}" aria-label="${escapeHtml(t.title)} — ${escapeHtml(alt.version)}">
+    <span class="bside-badge">ALT // ROADHOUSE</span>
+    <img src="${artSrc}" alt="${escapeHtml(t.title)} — ${escapeHtml(alt.version)} cover art" loading="lazy" width="800" height="800">
+  </a>
+  <div class="bside-card__body">
+    <div class="bside-card__meta">${escapeHtml(alt.byline)}</div>
+    <h3><a href="${trackUrl}">${escapeHtml(t.title)}</a> <span class="version-tag">/ ${escapeHtml(alt.version)}</span></h3>
+    <p class="oneliner">${escapeHtml(alt.oneliner)}</p>
+    ${audioBlock}
+    <div class="actions">
+      <a class="btn btn--whiskey" href="${trackUrl}">Track page →</a>
+      <a class="btn" href="/tracks/${t.slug}/">Original →</a>
+    </div>
+  </div>
+</article>`;
+    })
+    .join('\n');
+
+  return `<section class="bsides" id="bsides" aria-label="B-sides">
+  <header class="bsides__header">
+    <span class="bsides__kicker">// B-SIDES // ALTER EGO — THROUGHPUT MOJO</span>
+    <h2 class="bsides__title">Bottleneck Saloon</h2>
+    <p class="bsides__lede">When the rockers put down the andon cord and pick up a Telecaster. Cowpunk reinterpretations by the band's alter ego, <strong>Throughput Mojo</strong>. Same lyrics. Cold beer. So many avoidable regrets.</p>
+  </header>
+  <div class="bsides__grid">
+    ${cards}
+  </div>
+</section>`;
+}
+
 function trackCard(t) {
   const lyrics = renderLyrics(readLyrics(t.slug));
   const artSrc = `/art/${t.slug}.${t._artExt}`;
@@ -261,7 +342,15 @@ function trackCard(t) {
     ? `<a class="btn btn--primary" href="${audioSrc}" download>↓ MP3</a>`
     : '';
 
-  return `<article class="track-card" id="${escapeHtml(t.slug)}">
+  const altPills = Array.isArray(t.alternateVersions) && t.alternateVersions.length
+    ? t.alternateVersions
+        .map(
+          (alt) => `<a class="alt-pill" href="/tracks/${escapeHtml(t.slug)}/${escapeHtml(alt.slug)}/" title="${escapeHtml(alt.byline)}">+ ${escapeHtml(alt.version)}</a>`
+        )
+        .join('')
+    : '';
+
+  return `<article class="track-card${altPills ? ' has-alt' : ''}" id="${escapeHtml(t.slug)}">
   <a class="track-card__art" href="/tracks/${escapeHtml(t.slug)}/" aria-label="${escapeHtml(t.title)} — open track page">
     <span class="badge">TRK ${String(t.n).padStart(2, '0')}</span>
     <img src="${artSrc}" alt="${escapeHtml(t.title)} cover art" loading="lazy" width="800" height="800">
@@ -270,6 +359,7 @@ function trackCard(t) {
     <div class="track-card__meta">
       <span class="sin-num">SIN ${t.sinNumber}</span>
       ${escapeHtml(t.sin)}
+      ${altPills}
     </div>
     <h2><a href="/tracks/${escapeHtml(t.slug)}/">${escapeHtml(t.title)}</a></h2>
     <p class="oneliner">${escapeHtml(t.oneliner)}</p>
@@ -344,6 +434,8 @@ ${tracks
 ${tracks.map(trackCard).join('\n')}
 </main>
 
+${allAlternates.length ? bsidesSection() : ''}
+
 ${siteFooter()}
 
 <script>
@@ -415,6 +507,33 @@ ${siteHeader()}
     </div>
   </section>
 
+  ${
+    Array.isArray(t.alternateVersions) && t.alternateVersions.length
+      ? `<section class="alt-versions" aria-label="Alternate versions">
+    <h2 class="alt-versions__title">// OTHER VERSIONS</h2>
+    <div class="alt-versions__grid">
+      ${t.alternateVersions
+        .map((alt) => {
+          const altSlug = alt._fullSlug;
+          const altUrl = `/tracks/${t.slug}/${alt.slug}/`;
+          return `<a class="alt-version-card" href="${altUrl}">
+        <div class="alt-version-card__art">
+          <img src="/art/${altSlug}.${alt._artExt}" alt="${escapeHtml(alt.version)} cover art" loading="lazy">
+        </div>
+        <div class="alt-version-card__body">
+          <span class="alt-badge">ALT // ROADHOUSE</span>
+          <div class="alt-version-card__name">${escapeHtml(alt.version)}</div>
+          <div class="alt-version-card__byline">${escapeHtml(alt.byline)}</div>
+          <p class="alt-version-card__oneliner">${escapeHtml(alt.oneliner)}</p>
+        </div>
+      </a>`;
+        })
+        .join('')}
+    </div>
+  </section>`
+      : ''
+  }
+
   <section class="track-lyrics" aria-label="Lyrics">
     <h2>// LYRICS</h2>
     <pre>${lyrics}</pre>
@@ -423,6 +542,73 @@ ${siteHeader()}
   <nav class="track-nav" aria-label="Track navigation">
     <a href="/tracks/${escapeHtml(prev.slug)}/"><span class="arrow">←</span> ${escapeHtml(prev.title)}</a>
     <a href="/tracks/${escapeHtml(next.slug)}/">${escapeHtml(next.title)} <span class="arrow">→</span></a>
+  </nav>
+</article>
+
+${siteFooter()}
+</body>
+</html>
+`;
+}
+
+function alternateTrackPageHtml(t, alt) {
+  const altSlug = alt._fullSlug;
+  const ogImage = `${album.siteUrl}/art/${altSlug}.${alt._artExt}`;
+  const canonical = `${album.siteUrl}/tracks/${t.slug}/${alt.slug}/`;
+  const lyrics = renderLyrics(readLyrics(t.slug));
+  const artSrc = `/art/${altSlug}.${alt._artExt}`;
+  const audioSrc = `/audio/${altSlug}.mp3`;
+  const audioBlock = alt._hasAudio
+    ? `<audio controls preload="metadata" src="${audioSrc}"></audio>
+       <div class="actions" style="font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; display:flex; gap:10px;">
+         <a class="btn btn--whiskey" href="${audioSrc}" download>↓ Download MP3</a>
+         <a class="btn" href="/tracks/${t.slug}/">← Original version</a>
+       </div>`
+    : `<p style="color: var(--ink-dim); font-family: var(--mono); font-size: 13px;">[ Audio pending ]</p>`;
+
+  return `${head({
+    title: `${t.title} (${alt.version}) — The Safety Meeting Droppers`,
+    description: alt.oneliner,
+    ogImage,
+    ogImageW: 1000,
+    ogImageH: 1000,
+    ogImageAlt: `${t.title} — ${alt.version} cover art`,
+    canonical,
+  })}
+<body class="alt-track">
+${siteHeader()}
+
+<article class="track-page">
+  <nav class="breadcrumbs">
+    <a href="/">Album</a> &nbsp;/&nbsp;
+    <a href="/tracks/${t.slug}/">${escapeHtml(t.title)}</a> &nbsp;/&nbsp;
+    ${escapeHtml(alt.version)}
+  </nav>
+
+  <section class="track-hero track-hero--alt">
+    <div class="track-hero__art">
+      <img src="${artSrc}" alt="${escapeHtml(t.title)} — ${escapeHtml(alt.version)} cover art" width="1000" height="1000">
+    </div>
+    <div>
+      <div class="track-hero__meta track-hero__meta--alt">
+        <span class="alt-badge">ALT // ROADHOUSE</span>
+      </div>
+      <h1>${escapeHtml(t.title)}</h1>
+      <span class="alt-version-name">${escapeHtml(alt.version)}</span>
+      <p class="alt-byline">${escapeHtml(alt.byline)}</p>
+      <p class="description">${escapeHtml(alt.description)}</p>
+      ${audioBlock}
+    </div>
+  </section>
+
+  <section class="track-lyrics" aria-label="Lyrics">
+    <h2>// LYRICS — same words, different bar</h2>
+    <pre>${lyrics}</pre>
+  </section>
+
+  <nav class="track-nav" aria-label="Track navigation">
+    <a href="/tracks/${t.slug}/"><span class="arrow">←</span> Original version</a>
+    <a href="/#bsides">More B-sides <span class="arrow">→</span></a>
   </nav>
 </article>
 
@@ -442,8 +628,16 @@ tracks.forEach((t, i) => {
   const dir = path.join(DIST, 'tracks', t.slug);
   ensureDir(dir);
   fs.writeFileSync(path.join(dir, 'index.html'), trackPageHtml(t, i));
+
+  if (Array.isArray(t.alternateVersions)) {
+    for (const alt of t.alternateVersions) {
+      const altDir = path.join(DIST, 'tracks', t.slug, alt.slug);
+      ensureDir(altDir);
+      fs.writeFileSync(path.join(altDir, 'index.html'), alternateTrackPageHtml(t, alt));
+    }
+  }
 });
 
-console.log(`✓ Built ${tracks.length} track pages + index → dist/`);
-console.log(`  Audio: ${tracks.filter((t) => t._hasAudio).length}/${tracks.length}`);
-console.log(`  Art:   ${tracks.filter((t) => t._artExt).length}/${tracks.length}`);
+console.log(`✓ Built ${tracks.length} track pages + ${allAlternates.length} alt versions + index → dist/`);
+console.log(`  Audio:    ${tracks.filter((t) => t._hasAudio).length}/${tracks.length} originals, ${allAlternates.filter((a) => a._hasAudio).length}/${allAlternates.length} alts`);
+console.log(`  Art:      ${tracks.filter((t) => t._artExt).length}/${tracks.length} originals, ${allAlternates.filter((a) => a._artExt).length}/${allAlternates.length} alts`);

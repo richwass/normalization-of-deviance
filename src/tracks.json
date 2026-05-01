@@ -20,7 +20,18 @@
       "description": "Serious defects should trigger an andon-cord full response. Focus should remain until truly resolved.",
       "audio": "audio/stop-the-line.mp3",
       "art": "art/stop-the-line.png",
-      "lyricsFile": "stop-the-line.txt"
+      "lyricsFile": "stop-the-line.txt",
+      "alternateVersions": [
+        {
+          "slug": "roadhouse",
+          "version": "Roadhouse Version",
+          "byline": "by Throughput Mojo",
+          "oneliner": "Same sin, hung over and unrepentant. Andon cord meets last call at Lonely Junction.",
+          "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Same lyrics, different barstool.",
+          "audioSource": "Stop the Line (Normalization of Deviance) - Roadhouse version.mp3",
+          "artSource": "Stop the line (Normalization of Deviance) - Roadhouse - Mojo.png"
+        }
+      ]
     },
     {
       "n": 2,
@@ -32,7 +43,18 @@
       "description": "Lacking top-down alignment on the few things that need to be true in the future. Local and short-term decisions will fill the gap.",
       "audio": "audio/no-north-star.mp3",
       "art": "art/no-north-star.png",
-      "lyricsFile": "no-north-star.txt"
+      "lyricsFile": "no-north-star.txt",
+      "alternateVersions": [
+        {
+          "slug": "roadhouse",
+          "version": "Roadhouse Version",
+          "byline": "by Throughput Mojo",
+          "oneliner": "Compass spins past Lonely Junction. The vacuum of intent goes country.",
+          "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Cold beer, bad decisions, so many avoidable regrets.",
+          "audioSource": "No North Star (Vacuum of Intent) - Country mix.mp3",
+          "artSource": "No North Star (Vacuum of Intent) - Roadhouse.png"
+        }
+      ]
     },
     {
       "n": 3,

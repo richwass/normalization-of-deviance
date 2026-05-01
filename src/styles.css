@@ -439,6 +439,30 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
   color: var(--ink-dim);
   margin-left: 6px;
 }
+.track-card__meta .alt-pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  background: rgba(212,160,23,0.08);
+  border: 1px solid var(--whiskey);
+  padding: 2px 7px;
+  margin-left: 10px;
+  vertical-align: 1px;
+  border-bottom: 1px solid var(--whiskey);
+  transition: background 80ms;
+}
+.track-card__meta .alt-pill:hover {
+  background: var(--whiskey);
+  color: #1a0e00;
+}
+.track-card.has-alt::before {
+  /* second left bar so cards w/ alts get a subtle whiskey accent below the hazard */
+  background: linear-gradient(to bottom, var(--hazard) 0% 70%, var(--whiskey) 70% 100%);
+}
 .track-card h2 {
   font-family: var(--mono);
   font-size: clamp(22px, 2.4vw, 32px);
@@ -656,6 +680,275 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
 }
 .track-nav a:hover { color: var(--hazard); }
 .track-nav .arrow { color: var(--hazard); }
+
+/* ========== B-SIDES (Roadhouse alter ego) ========== */
+:root {
+  --whiskey: #d4a017;
+  --whiskey-dim: #8a6a10;
+  --rust: #b85a36;
+}
+
+.bsides {
+  max-width: 1200px;
+  margin: 16px auto 80px;
+  padding: 0 24px;
+}
+.bsides__header {
+  border-top: 1px dashed var(--rule);
+  padding-top: 36px;
+  margin-bottom: 28px;
+}
+.bsides__kicker {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  border: 1px solid var(--whiskey);
+  padding: 4px 10px;
+  margin-bottom: 14px;
+}
+.bsides__title {
+  font-family: var(--mono);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.05;
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.bsides__lede {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-dim);
+  max-width: 60ch;
+  margin: 0;
+}
+.bsides__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.bside-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(212,160,23,0.04) 0%, transparent 40%),
+    var(--bg-2);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--whiskey);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 8px 24px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.bside-card__art {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #000;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+.bside-card__art img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.bside-badge {
+  position: absolute;
+  top: 8px; left: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  background: rgba(0,0,0,0.78);
+  border: 1px solid var(--whiskey);
+  padding: 3px 6px;
+  z-index: 2;
+}
+.bside-card__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.bside-card__meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  margin-bottom: 6px;
+}
+.bside-card h3 {
+  font-family: var(--mono);
+  font-size: clamp(18px, 1.9vw, 24px);
+  line-height: 1.05;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  font-weight: 800;
+  color: var(--ink);
+}
+.bside-card h3 a { color: var(--ink); border: none; }
+.bside-card h3 a:hover { color: var(--whiskey); }
+.bside-card .version-tag {
+  color: var(--whiskey);
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.bside-card .oneliner {
+  color: var(--ink-dim);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.bside-card audio {
+  width: 100%;
+  margin-bottom: 12px;
+  filter: invert(1) hue-rotate(180deg) saturate(0.6);
+}
+.bside-card .actions {
+  display: flex;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-wrap: wrap;
+}
+.btn--whiskey {
+  border-color: var(--whiskey);
+  color: var(--whiskey);
+}
+.btn--whiskey:hover { background: var(--whiskey); color: #1a0e00; }
+
+@media (max-width: 900px) {
+  .bsides__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .bside-card { grid-template-columns: 1fr; padding: 16px; }
+  .bside-card__art { width: 100%; height: auto; aspect-ratio: 1/1; max-width: 320px; }
+}
+
+/* ========== ALT-VERSION CALLOUT on parent track page ========== */
+.alt-versions {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.alt-versions__title {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  margin: 0 0 18px;
+}
+.alt-versions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 16px;
+}
+.alt-version-card {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 14px;
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--whiskey);
+  text-decoration: none;
+  border-bottom: none;
+  color: inherit;
+}
+.alt-version-card:hover { background: rgba(212,160,23,0.06); }
+.alt-version-card__art {
+  width: 110px;
+  height: 110px;
+  background: #000;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.alt-version-card__art img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.alt-version-card__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.alt-version-card__name {
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 4px 0 4px;
+}
+.alt-version-card__byline {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  margin-bottom: 6px;
+}
+.alt-version-card__oneliner {
+  color: var(--ink-dim);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+.alt-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  border: 1px solid var(--whiskey);
+  padding: 2px 6px;
+  margin-bottom: 6px;
+}
+
+/* ========== ALT TRACK PAGE adjustments ========== */
+.track-hero--alt .track-hero__meta--alt {
+  color: var(--whiskey);
+  margin-bottom: 16px;
+}
+.track-hero--alt h1 + .alt-version-name {
+  display: inline-block;
+  background: var(--whiskey);
+  color: #1a0e00;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.alt-byline {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--whiskey);
+  margin: 0 0 18px;
+}
 
 /* ========== FOOTER ========== */
 .site-footer {
