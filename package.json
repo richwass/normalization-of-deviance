@@ -6,9 +6,11 @@
   "scripts": {
     "build": "node build.js",
     "serve": "cd dist && python3 -m http.server 8080",
-    "dev": "node build.js && cd dist && python3 -m http.server 8080"
+    "dev": "node build.js && cd dist && python3 -m http.server 8080",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
-    "wrangler": "^4.86.0"
+    "wrangler": "^4.87.0"
   }
 }
