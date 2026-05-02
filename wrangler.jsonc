@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "normalization-of-deviance",
+  "compatibility_date": "2026-05-02",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "dist"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}

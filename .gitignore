@@ -11,3 +11,9 @@ dist/
 # WAV masters live locally only — site ships MP3
 content/*.wav
 
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
