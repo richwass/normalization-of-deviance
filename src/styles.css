@@ -439,24 +439,41 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
   color: var(--ink-dim);
   margin-left: 6px;
 }
-.track-card__meta .alt-pill {
-  display: inline-block;
+.track-card__alt-line {
+  margin: -4px 0 14px;
+}
+.alt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--whiskey);
-  background: rgba(212,160,23,0.08);
+  background: rgba(212,160,23,0.06);
   border: 1px solid var(--whiskey);
-  padding: 2px 7px;
-  margin-left: 10px;
-  vertical-align: 1px;
+  padding: 4px 10px;
   border-bottom: 1px solid var(--whiskey);
-  transition: background 80ms;
+  transition: background 80ms, color 80ms;
 }
-.track-card__meta .alt-pill:hover {
+.alt-pill .alt-pill__prefix {
+  color: var(--ink-dim);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+.alt-pill .alt-pill__arrow {
+  color: var(--whiskey);
+  font-weight: 700;
+  margin-left: 2px;
+}
+.alt-pill:hover {
   background: var(--whiskey);
+  color: #1a0e00;
+}
+.alt-pill:hover .alt-pill__prefix,
+.alt-pill:hover .alt-pill__arrow {
   color: #1a0e00;
 }
 .track-card.has-alt::before {

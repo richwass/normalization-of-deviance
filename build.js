@@ -345,7 +345,7 @@ function trackCard(t) {
   const altPills = Array.isArray(t.alternateVersions) && t.alternateVersions.length
     ? t.alternateVersions
         .map(
-          (alt) => `<a class="alt-pill" href="/tracks/${escapeHtml(t.slug)}/${escapeHtml(alt.slug)}/" title="${escapeHtml(alt.byline)}">+ ${escapeHtml(alt.version)}</a>`
+          (alt) => `<a class="alt-pill" href="/tracks/${escapeHtml(t.slug)}/${escapeHtml(alt.slug)}/" title="${escapeHtml(alt.byline)}"><span class="alt-pill__prefix">ALSO:</span> ${escapeHtml(alt.version)} <span class="alt-pill__arrow" aria-hidden="true">→</span></a>`
         )
         .join('')
     : '';
@@ -359,9 +359,9 @@ function trackCard(t) {
     <div class="track-card__meta">
       <span class="sin-num">SIN ${t.sinNumber}</span>
       ${escapeHtml(t.sin)}
-      ${altPills}
     </div>
     <h2><a href="/tracks/${escapeHtml(t.slug)}/">${escapeHtml(t.title)}</a></h2>
+    ${altPills ? `<div class="track-card__alt-line">${altPills}</div>` : ''}
     <p class="oneliner">${escapeHtml(t.oneliner)}</p>
     ${audioBlock}
     <div class="actions">
