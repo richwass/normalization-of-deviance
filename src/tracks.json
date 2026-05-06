@@ -1,120 +1,289 @@
 {
-  "album": {
-    "title": "Sins Against Throughput",
-    "band": "Normalization of Deviance",
-    "tagline": "Hardcore nerdcore for operators who worship throughput.",
+  "site": {
     "siteUrl": "https://normalizationofdeviance.band",
     "contactEmail": "hello@normalizationofdeviance.band",
     "blogUrl": "https://www.randomwalkthroughtech.com/p/learning-from-the-failures-of-others",
     "blogLabel": "Liner notes & full essay: Learning from the Failures of Others",
-    "disclosure": "Human: concept, themes, art direction, curation. AI: lyric drafting, vocals, instrumentation — all prompted and shaped by the human. We disclose this because oral tradition is sin #6."
+    "disclosure": "Human: concept, themes, art direction, curation. AI: lyric drafting, vocals, instrumentation — all prompted and shaped by the human."
   },
-  "tracks": [
+  "band": {
+    "name": "Normalization of Deviance",
+    "tagline": "Concept albums about the operational sins that murder throughput.",
+    "altEgos": [
+      {
+        "name": "Throughput Mojo",
+        "description": "Cowpunk alter ego. Same lyrics, different bar."
+      }
+    ]
+  },
+  "albums": [
     {
-      "n": 1,
-      "slug": "stop-the-line",
-      "title": "Stop the Line",
-      "sin": "Normalization of Deviance",
-      "sinNumber": 4,
-      "oneliner": "Serious defects deserve an andon-cord response. Focus stays until truly resolved.",
-      "description": "Serious defects should trigger an andon-cord full response. Focus should remain until truly resolved.",
-      "audio": "audio/stop-the-line.mp3",
-      "art": "art/stop-the-line.png",
-      "lyricsFile": "stop-the-line.txt",
-      "alternateVersions": [
-        {
-          "slug": "roadhouse",
-          "version": "Roadhouse Version",
-          "byline": "by Throughput Mojo",
-          "oneliner": "Same sin, hung over and unrepentant. Andon cord meets last call at Lonely Junction.",
-          "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Same lyrics, different barstool.",
-          "audioSource": "Stop the Line (Normalization of Deviance) - Roadhouse version.mp3",
-          "artSource": "Stop the line (Normalization of Deviance) - Roadhouse - Mojo.png"
-        }
-      ]
-    },
-    {
+      "slug": "full-kit-rock",
+      "title": "Full Kit Rock",
+      "subtitle": "A CCPM Concept Album",
+      "year": 2026,
       "n": 2,
-      "slug": "no-north-star",
-      "title": "No North Star",
-      "sin": "Vacuum of Intent",
-      "sinNumber": 2,
-      "oneliner": "Without top-down alignment, local and short-term decisions fill the gap.",
-      "description": "Lacking top-down alignment on the few things that need to be true in the future. Local and short-term decisions will fill the gap.",
-      "audio": "audio/no-north-star.mp3",
-      "art": "art/no-north-star.png",
-      "lyricsFile": "no-north-star.txt",
-      "alternateVersions": [
+      "isLatest": true,
+      "tagline": "Eli Goldratt's Critical Chain set to driving rock with the urgency his ideas deserve.",
+      "description": "Eleven tracks teaching the operating system of throughput-driven projects: avoid bad multitasking, verify the full kit, triage the constraint, synchronise the relay, increase the dosage, abolish local optima. Critical Chain Project Management, but you can hum it.",
+      "aesthetic": "wpa",
+      "albumArtSource": "full-kit-rock/album cover.png",
+      "books": [
         {
-          "slug": "roadhouse",
-          "version": "Roadhouse Version",
-          "byline": "by Throughput Mojo",
-          "oneliner": "Compass spins past Lonely Junction. The vacuum of intent goes country.",
-          "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Cold beer, bad decisions, so many avoidable regrets.",
-          "audioSource": "No North Star (Vacuum of Intent) - Country mix.mp3",
-          "artSource": "No North Star (Vacuum of Intent) - Roadhouse.png"
+          "title": "Critical Chain",
+          "author": "Eliyahu M. Goldratt",
+          "year": 1997,
+          "url": "https://www.amazon.com/s?k=critical+chain+goldratt"
+        },
+        {
+          "title": "Goldratt's Rules of Flow",
+          "author": "Efrat Goldratt-Ashlag",
+          "year": 2023,
+          "url": "https://www.amazon.com/s?k=goldratts+rules+of+flow"
+        }
+      ],
+      "linerNotes": [
+        { "trackSlug": "the-whole-is-the-goal", "concept": "Rule 8 — Abolish Local Optima" },
+        { "trackSlug": "stop-starting-start-finishing", "concept": "Rule 1 — Avoid Bad Multitasking" },
+        { "trackSlug": "fix-the-blocker-not-the-noise", "concept": "Rule 3 — Triage the Constraint" },
+        { "trackSlug": "full-kit-first", "concept": "Rule 2 — Verify the Full Kit" },
+        { "trackSlug": "no-more-secret-safety", "concept": "CCPM — Pool the Buffer" },
+        { "trackSlug": "your-schedule-is-lying", "concept": "CCPM — Build the Critical Chain" },
+        { "trackSlug": "percent-complete-is-a-lie", "concept": "CCPM — Buffer-Burn Metrics" },
+        { "trackSlug": "dont-break-the-relay", "concept": "Rule 4 — Synchronise Resources" },
+        { "trackSlug": "increase-the-dosage", "concept": "Rule 5 — Increase the Dosage" },
+        { "trackSlug": "stop-paying-twice", "concept": "Rules 6+7 — Avoid Rework, Standardise" },
+        { "trackSlug": "ask-until-they-see-it", "concept": "Bonus — The Question Is the Mechanism" }
+      ],
+      "tracks": [
+        {
+          "n": 1,
+          "slug": "the-whole-is-the-goal",
+          "title": "The Whole Is the Goal",
+          "subtitle": "(The Whole Damn System)",
+          "oneliner": "Local optimisations don't strengthen the chain. The whole is the goal.",
+          "description": "We open with the big idea: the goal isn't for your team to finish faster or for your department to look good. It's for the entire system to deliver more. Local optimisations don't strengthen the chain.",
+          "audioSource": "full-kit-rock/The Whole is the Goal (The Whole Damn System).mp3",
+          "lyricsFile": "the-whole-is-the-goal.txt"
+        },
+        {
+          "n": 2,
+          "slug": "stop-starting-start-finishing",
+          "title": "Stop Starting, Start Finishing",
+          "oneliner": "Too much WIP kills flow. Finish what you started.",
+          "description": "Too much work-in-progress kills flow. Four people running eight sprint tickets at once means nothing actually ships. Control WIP. Finish before you start.",
+          "audioSource": "full-kit-rock/Stop Starting, Start Finishing.mp3",
+          "lyricsFile": "stop-starting-start-finishing.txt"
+        },
+        {
+          "n": 3,
+          "slug": "fix-the-blocker-not-the-noise",
+          "title": "Fix the Blocker, Not the Noise",
+          "oneliner": "Triage by what unblocks flow, not by what shouts loudest.",
+          "description": "When everything is urgent, how do you decide what to do first? Triage isn't about volume or politics; it's about picking the work that unblocks flow. Address the real constraint instead of the loudest complaint.",
+          "audioSource": "full-kit-rock/Fix the Blocker, Not the Noise.mp3",
+          "lyricsFile": "fix-the-blocker-not-the-noise.txt"
+        },
+        {
+          "n": 4,
+          "slug": "full-kit-first",
+          "title": "Full Kit First",
+          "subtitle": "(Show Me the Full Kit)",
+          "oneliner": "Don't start a task you can't finish. Names, decisions, specs, test env — show me the full kit.",
+          "description": "Ever started a DIY project and realised halfway through that you're missing parts? That's life without a full kit. A pre-flight checklist: names, decisions, specs, test environment — everything you need before starting so you don't stall mid-task.",
+          "audioSource": "full-kit-rock/Full Kit First (Show Me the Full Kit).mp3",
+          "lyricsFile": "full-kit-first.txt"
+        },
+        {
+          "n": 5,
+          "slug": "no-more-secret-safety",
+          "title": "No More Secret Safety",
+          "oneliner": "Hidden safety in every task gets eaten. Pool the buffer.",
+          "description": "Padding every task with extra time doesn't make projects safer; it invites procrastination and polishing. Hidden safety gets eaten. Pooled buffers fix the problem.",
+          "audioSource": "full-kit-rock/No More Secret Safety.mp3",
+          "lyricsFile": "no-more-secret-safety.txt"
+        },
+        {
+          "n": 6,
+          "slug": "your-schedule-is-lying",
+          "title": "Your Schedule Is Lying",
+          "subtitle": "(Build the Real Chain)",
+          "oneliner": "Gantt charts pretend one person can be in three places. Count the resources, build the real chain.",
+          "description": "A traditional Gantt chart ignores resource availability. It assumes the same person can be in three places at once. Build the critical chain by counting scarce resources and dependencies — no fantasy scheduling.",
+          "audioSource": "full-kit-rock/Your Schedule is Lying (Build the real chain).mp3",
+          "lyricsFile": "your-schedule-is-lying.txt"
+        },
+        {
+          "n": 7,
+          "slug": "percent-complete-is-a-lie",
+          "title": "Percent Complete Is a Lie",
+          "subtitle": "(Show Me the Buffer)",
+          "oneliner": "'90% done' is a comforting fiction. Show me the buffer burn.",
+          "description": "You've heard '90% done' too many times. Use the buffer burn and remaining duration to track progress. Percent complete is for suckers; fever charts are your friend.",
+          "audioSource": "full-kit-rock/Percent complete is a lie (show me the buffer).mp3",
+          "lyricsFile": "percent-complete-is-a-lie.txt"
+        },
+        {
+          "n": 8,
+          "slug": "dont-break-the-relay",
+          "title": "Don't Break the Relay",
+          "subtitle": "(Done Means the Next Step Can Run)",
+          "oneliner": "Critical chain is a relay race. Don't drop the baton.",
+          "description": "Once the critical chain is in motion, it should move like a relay race: start when the baton arrives, finish without delay, and hand it off cleanly. Resource buffers and synchronised work so finished tasks don't sit waiting.",
+          "audioSource": "full-kit-rock/Don't Break the Relay.mp3",
+          "lyricsFile": "dont-break-the-relay.txt"
+        },
+        {
+          "n": 9,
+          "slug": "increase-the-dosage",
+          "title": "Increase the Dosage",
+          "subtitle": "(The Dose Isn't Strong Enough)",
+          "oneliner": "If the problem keeps coming back, the dose isn't strong enough.",
+          "description": "Ever fix a problem only to have it return like a villain in a horror movie? Sometimes the remedy is too weak. Increase the dosage — give the issue more time, more expertise, or a stronger gate.",
+          "audioSource": "full-kit-rock/Increase the Dosage.mp3",
+          "lyricsFile": "increase-the-dosage.txt"
+        },
+        {
+          "n": 10,
+          "slug": "stop-paying-twice",
+          "title": "Stop Paying Twice",
+          "oneliner": "Rework is work going backwards. Standardise the traps; protect the judgment.",
+          "description": "Rework is work going backwards. When requirements change after coding or tests are written after bugs, you're paying twice. Standardise the repetitive traps while leaving room for judgment where it creates value.",
+          "audioSource": "full-kit-rock/Stop Paying Twice.mp3",
+          "lyricsFile": "stop-paying-twice.txt"
+        },
+        {
+          "n": 11,
+          "slug": "ask-until-they-see-it",
+          "title": "Ask Until They See It",
+          "subtitle": "(The Question Is the Mechanism)",
+          "isBonus": true,
+          "oneliner": "People defend processes you hand them. They fight for conclusions they discover.",
+          "description": "Goldratt's novels rarely preach; they ask questions that guide characters to discover the answers. Instead of lecturing people about constraints, ask where work is waiting, what happens when safety is hidden, what one expert on five projects does to a schedule.",
+          "audioSource": "full-kit-rock/Ask Until They See It (The Question Is the Mechanism).mp3",
+          "lyricsFile": "ask-until-they-see-it.txt"
         }
       ]
     },
     {
-      "n": 3,
-      "slug": "coordination-spaghetti",
-      "title": "Coordination Spaghetti",
-      "sin": "Communication Complexity",
-      "sinNumber": 5,
-      "oneliner": "When too many people must talk to too many others for too many decisions.",
-      "description": "A risk when many people need to talk to too many other people for many decisions.",
-      "audio": "audio/coordination-spaghetti.mp3",
-      "art": "art/coordination-spaghetti.png",
-      "lyricsFile": "coordination-spaghetti.txt"
-    },
-    {
-      "n": 4,
-      "slug": "patched-not-fixed",
-      "title": "Patched Not Fixed",
-      "sin": "Perpetual Triage",
-      "sinNumber": 7,
-      "oneliner": "Managing via expediting instead of fixing the underlying constraint.",
-      "description": "Managing via expediting instead of fixing underlying constraints.",
-      "audio": "audio/patched-not-fixed.mp3",
-      "art": "art/patched-not-fixed.png",
-      "lyricsFile": "patched-not-fixed.txt"
-    },
-    {
-      "n": 5,
-      "slug": "few-nodes-many-consequences",
-      "title": "Few Nodes, Many Consequences",
-      "sin": "Fragility of the Few",
-      "sinNumber": 3,
-      "oneliner": "A small number of subject-matter experts limit progress. Have a plan for the bottleneck.",
-      "description": "A small number of subject matter experts limit progress. If work piles up in front of these bottlenecks it's key to have a plan. This is true about all bottlenecks — but often especially ignored with people.",
-      "audio": "audio/few-nodes-many-consequences.mp3",
-      "art": "art/few-nodes-many-consequences.png",
-      "lyricsFile": "few-nodes-many-consequences.txt"
-    },
-    {
-      "n": 6,
-      "slug": "now-now-now",
-      "title": "Now Now Now",
-      "sin": "Tyranny of the Urgent",
-      "sinNumber": 1,
-      "oneliner": "Picking the short-term better over the long-term valuable. Again. And again.",
-      "description": "Consistently choosing the short-term better over the long-term. Long term is harder, but more valuable.",
-      "audio": "audio/now-now-now.mp3",
-      "art": "art/now-now-now.png",
-      "lyricsFile": "now-now-now.txt"
-    },
-    {
-      "n": 7,
-      "slug": "docs-or-it-didnt-happen",
-      "title": "Docs or It Didn't Happen",
-      "sin": "Oral Tradition",
-      "sinNumber": 6,
-      "oneliner": "If knowledge stays in people instead of shared systems, the org has memory loss.",
-      "description": "A risk if people talk when they should write. Knowledge stays in people instead of in shared systems.",
-      "audio": "audio/docs-or-it-didnt-happen.mp3",
-      "art": "art/docs-or-it-didnt-happen.png",
-      "lyricsFile": "docs-or-it-didnt-happen.txt"
+      "slug": "sins-against-throughput",
+      "title": "Sins Against Throughput",
+      "subtitle": "Concept EP — Seven Sins",
+      "year": 2026,
+      "n": 1,
+      "tagline": "Hardcore nerdcore for operators who worship throughput.",
+      "description": "Seven tracks. Seven failure modes that quietly murder flow inside otherwise functional organizations. Hit play. Pull the cord.",
+      "aesthetic": "industrial",
+      "albumArtSource": "normalization-of-deviance_1800x1800.png",
+      "bannerSource": "banner.jpg",
+      "tracks": [
+        {
+          "n": 1,
+          "slug": "stop-the-line",
+          "title": "Stop the Line",
+          "sin": "Normalization of Deviance",
+          "sinNumber": 4,
+          "oneliner": "Serious defects deserve an andon-cord response. Focus stays until truly resolved.",
+          "description": "Serious defects should trigger an andon-cord full response. Focus should remain until truly resolved.",
+          "audioSource": "Stop the Line (Normalization of Deviance).mp3",
+          "artSource": "normalization-of-deviance_1800x1800.png",
+          "lyricsFile": "stop-the-line.txt",
+          "alternateVersions": [
+            {
+              "slug": "roadhouse",
+              "version": "Roadhouse Version",
+              "byline": "by Throughput Mojo",
+              "oneliner": "Same sin, hung over and unrepentant. Andon cord meets last call at Lonely Junction.",
+              "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Same lyrics, different barstool.",
+              "audioSource": "Stop the Line (Normalization of Deviance) - Roadhouse version.mp3",
+              "artSource": "Stop the line (Normalization of Deviance) - Roadhouse - Mojo.png"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "slug": "no-north-star",
+          "title": "No North Star",
+          "sin": "Vacuum of Intent",
+          "sinNumber": 2,
+          "oneliner": "Without top-down alignment, local and short-term decisions fill the gap.",
+          "description": "Lacking top-down alignment on the few things that need to be true in the future. Local and short-term decisions will fill the gap.",
+          "audioSource": "No North Star (Vacuum of Intent).mp3",
+          "artSource": "vacuum-of-intent_1800x1800.png",
+          "lyricsFile": "no-north-star.txt",
+          "alternateVersions": [
+            {
+              "slug": "roadhouse",
+              "version": "Roadhouse Version",
+              "byline": "by Throughput Mojo",
+              "oneliner": "Compass spins past Lonely Junction. The vacuum of intent goes country.",
+              "description": "A country/roadhouse reinterpretation by the band's alter ego, Throughput Mojo, off the EP Bottleneck Saloon. Cold beer, bad decisions, so many avoidable regrets.",
+              "audioSource": "No North Star (Vacuum of Intent) - Country mix.mp3",
+              "artSource": "No North Star (Vacuum of Intent) - Roadhouse.png"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "slug": "coordination-spaghetti",
+          "title": "Coordination Spaghetti",
+          "sin": "Communication Complexity",
+          "sinNumber": 5,
+          "oneliner": "When too many people must talk to too many others for too many decisions.",
+          "description": "A risk when many people need to talk to too many other people for many decisions.",
+          "audioSource": "Coordination Spaghetti (Communication Complexity).mp3",
+          "artSource": "communication-complexity_1800x1800.png",
+          "lyricsFile": "coordination-spaghetti.txt"
+        },
+        {
+          "n": 4,
+          "slug": "patched-not-fixed",
+          "title": "Patched Not Fixed",
+          "sin": "Perpetual Triage",
+          "sinNumber": 7,
+          "oneliner": "Managing via expediting instead of fixing the underlying constraint.",
+          "description": "Managing via expediting instead of fixing underlying constraints.",
+          "audioSource": "Patched not Fixed (Perpetual Triage).mp3",
+          "artSource": "perpetual-triage_1800x1800.png",
+          "lyricsFile": "patched-not-fixed.txt"
+        },
+        {
+          "n": 5,
+          "slug": "few-nodes-many-consequences",
+          "title": "Few Nodes, Many Consequences",
+          "sin": "Fragility of the Few",
+          "sinNumber": 3,
+          "oneliner": "A small number of subject-matter experts limit progress. Have a plan for the bottleneck.",
+          "description": "A small number of subject matter experts limit progress. If work piles up in front of these bottlenecks it's key to have a plan. This is true about all bottlenecks — but often especially ignored with people.",
+          "audioSource": "Few Nodes, Many Consequences (Fragility of the Few).mp3",
+          "artSource": "fragility-of-the-few_1800x1800.png",
+          "lyricsFile": "few-nodes-many-consequences.txt"
+        },
+        {
+          "n": 6,
+          "slug": "now-now-now",
+          "title": "Now Now Now",
+          "sin": "Tyranny of the Urgent",
+          "sinNumber": 1,
+          "oneliner": "Picking the short-term better over the long-term valuable. Again. And again.",
+          "description": "Consistently choosing the short-term better over the long-term. Long term is harder, but more valuable.",
+          "audioSource": "Now Now Now (Tyranny of the Urgent).mp3",
+          "artSource": "tyranny-of-the-urgent_1800x1800.png",
+          "lyricsFile": "now-now-now.txt"
+        },
+        {
+          "n": 7,
+          "slug": "docs-or-it-didnt-happen",
+          "title": "Docs or It Didn't Happen",
+          "sin": "Oral Tradition",
+          "sinNumber": 6,
+          "oneliner": "If knowledge stays in people instead of shared systems, the org has memory loss.",
+          "description": "A risk if people talk when they should write. Knowledge stays in people instead of in shared systems.",
+          "audioSource": "Docs or it didn't happen (Oral Tradition).mp3",
+          "artSource": "oral-tradition_1800x1800_exact.png",
+          "lyricsFile": "docs-or-it-didnt-happen.txt"
+        }
+      ]
     }
   ]
 }

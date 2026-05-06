@@ -11,3 +11,5 @@ dist/
 # WAV masters live locally only — site ships MP3
 content/*.wav
 
+
+Content 2/
