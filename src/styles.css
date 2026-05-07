@@ -1671,6 +1671,31 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
 .tracks--wpa .track-card__body {
   padding-right: 8px;
 }
+
+/* WPA card mobile: collapse to single column (cover stacked above body) */
+@media (max-width: 760px) {
+  .tracks--wpa { padding: 32px 0; }
+  .tracks--wpa .track-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 16px;
+    width: calc(100% - 32px);
+    gap: 18px;
+  }
+  .tracks--wpa .track-card__art {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 1 / 1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .tracks--wpa .track-card__art img {
+    height: auto;
+    max-height: none;
+    aspect-ratio: 1 / 1;
+  }
+}
 .tracks--wpa .track-card::before { background: var(--wpa-red); }
 .tracks--wpa .track-card.is-bonus::before { background: linear-gradient(to bottom, var(--wpa-gold), var(--wpa-red)); }
 .tracks--wpa .track-card__art {
