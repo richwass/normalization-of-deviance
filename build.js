@@ -571,9 +571,17 @@ function wpaLinerNotes(album) {
 }
 
 function wpaBooks(album) {
+  const essayBlock = album.essay
+    ? `<a class="wpa-essay" href="${escapeHtml(album.essay.url)}" rel="noopener" target="_blank">
+      <span class="wpa-essay__kicker">// LINER ESSAY</span>
+      <span class="wpa-essay__title">${escapeHtml(album.essay.title)}</span>
+      <span class="wpa-essay__cta">${escapeHtml(album.essay.label)} →</span>
+    </a>`
+    : '';
   return `<section class="wpa-books" aria-label="Source material">
   <h2 class="wpa-books__title">// SOURCE MATERIAL</h2>
   <p class="wpa-books__lede">The album draws on two of Eli Goldratt's books. If you want the full theory behind the chorus, start here.</p>
+  ${essayBlock}
   <ul class="wpa-books__list">
     ${album.books
       .map(

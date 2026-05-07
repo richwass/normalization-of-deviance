@@ -28,6 +28,11 @@
       "description": "Eleven tracks teaching the operating system of throughput-driven projects: avoid bad multitasking, verify the full kit, triage the constraint, synchronise the relay, increase the dosage, abolish local optima. Critical Chain Project Management, but you can hum it.",
       "aesthetic": "wpa",
       "albumArtSource": "full-kit-rock/album cover.png",
+      "essay": {
+        "title": "TOC's Critical Chain and Rules of Flow",
+        "label": "Read the deeper story behind the album",
+        "url": "https://www.randomwalkthroughtech.com/p/tocs-critical-chain-and-rules-of"
+      },
       "books": [
         {
           "title": "Critical Chain",
