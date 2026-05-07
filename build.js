@@ -572,11 +572,13 @@ function wpaLinerNotes(album) {
 
 function wpaBooks(album) {
   const essayBlock = album.essay
-    ? `<a class="wpa-essay" href="${escapeHtml(album.essay.url)}" rel="noopener" target="_blank">
-      <span class="wpa-essay__kicker">// LINER ESSAY</span>
-      <span class="wpa-essay__title">${escapeHtml(album.essay.title)}</span>
-      <span class="wpa-essay__cta">${escapeHtml(album.essay.label)} →</span>
-    </a>`
+    ? `<div class="wpa-essay">
+      <span class="wpa-essay__kicker">Liner Essay</span>
+      <a class="wpa-essay__link" href="${escapeHtml(album.essay.url)}" rel="noopener" target="_blank">
+        <span class="wpa-essay__title">${escapeHtml(album.essay.title)}</span>
+        <span class="wpa-essay__cta">${escapeHtml(album.essay.label)} →</span>
+      </a>
+    </div>`
     : '';
   return `<section class="wpa-books" aria-label="Source material">
   <h2 class="wpa-books__title">// SOURCE MATERIAL</h2>

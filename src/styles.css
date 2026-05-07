@@ -1585,55 +1585,57 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
   font-weight: 700;
 }
 .wpa-essay {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 18px;
-  align-items: baseline;
   max-width: 1200px;
   margin: 0 auto 22px;
-  padding: 18px 22px;
-  background: var(--wpa-navy);
-  color: var(--wpa-cream);
-  border: 2px solid var(--wpa-navy);
-  border-left: 6px solid var(--wpa-red);
-  text-decoration: none;
+  padding: 20px 24px;
+  background-color: #1d3563;
+  color: #f7eccd;
+  border: 2px solid #1d3563;
+  border-left: 6px solid #a83a2c;
   font-family: var(--mono);
-  transition: background 80ms;
-}
-.wpa-essay:hover {
-  background: var(--wpa-navy-dark);
 }
 .wpa-essay__kicker {
+  display: block;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--wpa-gold);
+  color: #e0a93a;
   font-weight: 700;
-  white-space: nowrap;
+  margin-bottom: 8px;
 }
+.wpa-essay__link {
+  display: block;
+  color: #f7eccd;
+  text-decoration: none;
+  border: none;
+  border-bottom: none;
+}
+.wpa-essay__link:hover { color: #e0a93a; border-bottom: none; }
+.wpa-essay__link:hover .wpa-essay__cta { color: #f7eccd; }
 .wpa-essay__title {
+  display: block;
   font-family: var(--wpa-display);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(18px, 2.2vw, 26px);
   font-weight: 800;
-  color: var(--wpa-cream);
+  color: inherit;
   font-style: italic;
+  line-height: 1.2;
+  margin-bottom: 6px;
 }
 .wpa-essay__cta {
+  display: inline-block;
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--wpa-gold);
+  color: #e0a93a;
   font-weight: 700;
-  white-space: nowrap;
 }
 @media (max-width: 760px) {
   .wpa-essay {
-    grid-template-columns: 1fr;
-    gap: 8px;
     margin-left: 16px;
     margin-right: 16px;
+    max-width: none;
   }
-  .wpa-essay__cta { white-space: normal; }
 }
 
 .wpa-books__list {
