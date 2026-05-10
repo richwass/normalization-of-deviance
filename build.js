@@ -182,6 +182,12 @@ else if (fs.existsSync(bannerRaw)) copyFile(bannerRaw, path.join(DIST, 'banner.j
 const ogCard = path.join(CONTENT, 'optimized', 'og.jpg');
 if (fs.existsSync(ogCard)) copyFile(ogCard, path.join(DIST, 'og.jpg'));
 
+// Favicon set (run tools/make_favicon.py to regenerate)
+for (const fname of ['favicon.ico', 'favicon-32.png', 'favicon-180.png']) {
+  const src = path.join(CONTENT, 'optimized', fname);
+  if (fs.existsSync(src)) copyFile(src, path.join(DIST, fname));
+}
+
 copyFile(path.join(SRC, 'styles.css'), path.join(DIST, 'styles.css'));
 const headersSrc = path.join(SRC, '_headers');
 if (fs.existsSync(headersSrc)) copyFile(headersSrc, path.join(DIST, '_headers'));
@@ -242,6 +248,9 @@ function head({ title, description, ogImage, ogImageW, ogImageH, ogImageAlt, can
 <meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt || title)}">
 
 <meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-180.png">
 <link rel="stylesheet" href="/styles.css">
 </head>${bodyClass ? `\n<body class="${bodyClass}">` : '\n<body>'}`;
 }
@@ -815,11 +824,40 @@ ${siteFooter()}
 `;
 }
 
+function fourOhFourHtml() {
+  return `${head({
+    title: '404 — Normalization of Deviance',
+    description: 'Page not found.',
+    ogImage: `${site.siteUrl}/og.jpg`,
+    ogImageW: 1200,
+    ogImageH: 630,
+    ogImageAlt: 'Normalization of Deviance',
+    canonical: site.siteUrl + '/',
+  })}
+${siteHeader()}
+<main style="max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; font-family: var(--mono);">
+  <div style="display: inline-block; color: var(--hazard); border: 1px solid var(--hazard); padding: 4px 12px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 24px;">// CAUTION // 404 //</div>
+  <h1 style="font-family: var(--mono); font-size: clamp(48px, 8vw, 96px); color: var(--hazard); margin: 0 0 18px; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.03em;">Defect<br>at this URL</h1>
+  <p style="font-size: 17px; line-height: 1.55; color: var(--ink); max-width: 56ch; margin: 0 0 18px;">The page you asked for doesn't exist on this server. Maybe a typo, maybe an old link, maybe a bot scanning for vulnerabilities. Whichever it is — pull the cord.</p>
+  <p style="font-family: var(--mono); font-size: 13px; color: var(--ink-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px;">Status: 404 / Action: pull-the-cord</p>
+  <div style="display: flex; gap: 12px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">
+    <a class="btn btn--primary" href="/">← All releases</a>
+    <a class="btn" href="/albums/full-kit-rock/">Full Kit Rock</a>
+    <a class="btn" href="/albums/sins-against-throughput/">Sins Against Throughput</a>
+  </div>
+</main>
+${siteFooter()}
+</body>
+</html>
+`;
+}
+
 // ---------------------------------------------------------------------------
 // emit
 // ---------------------------------------------------------------------------
 
 fs.writeFileSync(path.join(DIST, 'index.html'), homeHtml());
+fs.writeFileSync(path.join(DIST, '404.html'), fourOhFourHtml());
 
 for (const album of albums) {
   const albumDir = path.join(DIST, 'albums', album.slug);
