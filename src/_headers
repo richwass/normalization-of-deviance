@@ -16,6 +16,13 @@
 /banner.jpg
   Cache-Control: public, max-age=86400, must-revalidate
 
-# HTML can be revalidated on every visit
+# HTML can be revalidated on every visit. Plus security hardening headers
+# applied to every response: CSP locks scripts/styles to self + the Chart.js
+# CDN used by the (local-only) analytics dashboard; X-Frame-Options blocks
+# clickjacking; Permissions-Policy disables sensors etc the site never uses.
 /*
   Cache-Control: public, max-age=0, must-revalidate
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
