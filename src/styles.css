@@ -1103,9 +1103,9 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
 
 .release {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 320px 1fr;
   gap: 32px;
-  padding: 24px;
+  padding: 28px;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.025) 0%, transparent 40%),
     var(--bg-2);
@@ -1115,9 +1115,11 @@ a:hover { color: #fff; border-bottom-color: var(--cyan); }
   box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px rgba(0,0,0,0.35);
   margin-bottom: 24px;
 }
+/* .release--featured retained for compatibility but no longer changes size —
+   the NEW RELEASE badge alone signals which release is latest. */
 .release--featured {
-  grid-template-columns: 360px 1fr;
-  padding: 32px;
+  grid-template-columns: 320px 1fr;
+  padding: 28px;
 }
 .release[data-aesthetic="wpa"] { border-left-color: #d65a3a; }
 .release__art {
