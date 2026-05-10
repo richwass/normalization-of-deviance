@@ -20,3 +20,6 @@ Content 2/
 
 # Generated analytics dashboard — local only, never deployed
 analytics-output/
+
+# Local-only tools (analytics, etc.) — never deployed, never public
+local/
