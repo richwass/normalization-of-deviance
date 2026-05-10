@@ -17,3 +17,6 @@ Content 2/
 # Cloudflare analytics token lives at ~/.cloudflare-analytics-token
 # (outside the repo) — gitignoring for safety in case it ever gets copied in
 .cloudflare-analytics-token
+
+# Generated analytics dashboard — local only, never deployed
+analytics-output/

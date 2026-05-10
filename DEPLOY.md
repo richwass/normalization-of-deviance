@@ -69,6 +69,24 @@ To check current auth status:
 npx wrangler whoami
 ```
 
+## Analytics dashboard (local only, never deployed)
+
+Pull traffic stats from Cloudflare and generate a local dashboard:
+
+```bash
+python3 tools/analytics.py --days 14 --html --open
+```
+
+- `--days N` — window size (default 14). Adaptive groups are capped at 1-day per query, so the script iterates one day at a time and aggregates client-side.
+- `--html` — write `analytics-output/index.html` (gitignored, never deployed).
+- `--open` — open the generated dashboard in your browser.
+
+Without `--html`, prints a console-only report.
+
+**Auth:** the script reads `~/.cloudflare-analytics-token` (chmod 600, *outside* the repo). To get a token: see https://dash.cloudflare.com/profile/api-tokens — needs `Account.Account Analytics:Read`, `Zone.Analytics:Read`, `Zone.Zone:Read`. Token is read-only and revocable.
+
+**Output is gitignored** — `analytics-output/` and `.cloudflare-analytics-token` are both in `.gitignore`. The HTML embeds traffic numbers but **no secrets**.
+
 ## What lives where
 
 - **Source:** `/Users/richwasserman/projects/nerdcore-album/` (this repo)
